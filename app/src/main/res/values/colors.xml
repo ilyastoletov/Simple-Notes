@@ -3,7 +3,7 @@
     <color name="status_bar_color">#515151</color>
     <color name="grey_main">#313131</color>
     <color name="notes_item_color">#1B1B1B</color>
-    <color name="notes_small_text_color">BFBFBF</color>
+    <color name="notes_small_text_color">#BFBFBF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
