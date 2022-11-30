@@ -3,33 +3,34 @@ package com.rostelekom.simplenotes.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.rostelekom.simplenotes.databinding.NotesItemBinding
-import com.rostelekom.simplenotes.ui.models.Notes
+import com.rostelekom.simplenotes.R
+import com.rostelekom.simplenotes.data.room.model.NotesModel
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesHolder>() {
 
-    private var notes: ArrayList<Notes> = arrayListOf()
+    private var notes: List<NotesModel> = listOf()
 
-    class NotesHolder(itemView: View, binding: NotesItemBinding): RecyclerView.ViewHolder(itemView) {
-        val notesTitle = binding.notesTitle
-        val notesShortText = binding.notesShortText
+    class NotesHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.findViewById(R.id.notes_title)
+        val shortText: TextView = itemView.findViewById(R.id.notes_short_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesHolder {
-        val binding: NotesItemBinding = NotesItemBinding.inflate(LayoutInflater.from(parent.context))
-        return NotesHolder(binding.root, binding)
+        return NotesHolder(LayoutInflater.from(parent.context).inflate(R.layout.notes_item, parent))
     }
 
     override fun onBindViewHolder(holder: NotesHolder, position: Int) {
-        holder.notesTitle.text = notes[position].title
-        holder.notesShortText.text = notes[position].smallText
+        holder.title.text = notes[position].noteTitle.getFirstSymbols(16)
+        holder.shortText.text = notes[position].noteText.getFirstSymbols(100)
     }
 
     override fun getItemCount(): Int = notes.size
 
-    fun changeList(newNotesList: ArrayList<Notes>) {
+    private fun String.getFirstSymbols(count: Int): String = this.split("", limit=count).dropLast(1).joinToString("") + if (this.length > count) { "..." } else { "" }
+
+    fun changeList(newNotesList: List<NotesModel>) {
         notes = newNotesList
         notifyDataSetChanged()
     }
