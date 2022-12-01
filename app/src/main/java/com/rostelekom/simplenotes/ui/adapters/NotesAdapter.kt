@@ -7,23 +7,28 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rostelekom.simplenotes.R
 import com.rostelekom.simplenotes.data.room.model.NotesModel
+import com.rostelekom.simplenotes.databinding.NotesItemBinding
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesHolder>() {
 
-    private var notes: List<NotesModel> = listOf()
+    private var notes: List<NotesModel> = listOf(
+        NotesModel(id=0, "Любимое занятие", "Порой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знать"),
+        NotesModel(id=0, "Любимое занятие", "Порой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знать")
+    )
 
-    class NotesHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.notes_title)
-        val shortText: TextView = itemView.findViewById(R.id.notes_short_text)
+    class NotesHolder(itemView: View, binding: NotesItemBinding): RecyclerView.ViewHolder(itemView) {
+        val title: TextView = binding.notesTitle
+        val shortText: TextView = binding.notesShortText
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesHolder {
-        return NotesHolder(LayoutInflater.from(parent.context).inflate(R.layout.notes_item, parent))
+        val binding = NotesItemBinding.inflate(LayoutInflater.from(parent.context))
+        return NotesHolder(binding.root, binding)
     }
 
     override fun onBindViewHolder(holder: NotesHolder, position: Int) {
-        holder.title.text = notes[position].noteTitle.getFirstSymbols(16)
-        holder.shortText.text = notes[position].noteText.getFirstSymbols(100)
+        holder.title.text = notes[position].noteTitle.getFirstSymbols(14)
+        holder.shortText.text = notes[position].noteText.getFirstSymbols(140)
     }
 
     override fun getItemCount(): Int = notes.size

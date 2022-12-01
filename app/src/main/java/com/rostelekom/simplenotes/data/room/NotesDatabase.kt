@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.rostelekom.simplenotes.data.room.dao.NoteDao
 import com.rostelekom.simplenotes.data.room.model.NotesModel
 
-@Database(entities = [NotesModel::class], version = 2)
+@Database(entities = [NotesModel::class], version = 1, exportSchema = false)
 abstract class NotesDatabase: RoomDatabase() {
 
     abstract fun getNoteDao(): NoteDao
@@ -18,7 +18,7 @@ abstract class NotesDatabase: RoomDatabase() {
         @Synchronized
         fun getDatabaseInstance(context: Context): NotesDatabase {
             return if (database == null) {
-                database = Room.databaseBuilder(context, NotesDatabase::class.java, "notes_db").build()
+                database = Room.databaseBuilder(context, NotesDatabase::class.java, "notes_db").fallbackToDestructiveMigration().build()
                 database as NotesDatabase
             } else {
                 database as NotesDatabase

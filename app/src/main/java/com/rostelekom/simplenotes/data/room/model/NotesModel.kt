@@ -11,9 +11,6 @@ data class NotesModel(
     var id: Int = 0,
 
     @ColumnInfo
-    var noteId: String = "",
-
-    @ColumnInfo
     var noteTitle: String = "",
 
     @ColumnInfo

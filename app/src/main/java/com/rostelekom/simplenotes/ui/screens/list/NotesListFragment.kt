@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.rostelekom.simplenotes.APP
 import com.rostelekom.simplenotes.R
 import com.rostelekom.simplenotes.databinding.FragmentNotesListBinding
 import com.rostelekom.simplenotes.ui.adapters.NotesAdapter
@@ -27,12 +28,6 @@ class NotesListFragment : Fragment() {
 
         init()
 
-        /*val testNotesList: ArrayList<Notes> = arrayListOf(
-            Notes("Любимое занятие", "Порой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знать"),
-            Notes("Люблю себя", "Лорем ипсум дорор сит амет, аверс катаверс")
-        )
-        rvAdapter.changeList(testNotesList)*/
-
     }
 
     private fun init() {
@@ -49,6 +44,10 @@ class NotesListFragment : Fragment() {
         viewModel.getAllNotes().observe(viewLifecycleOwner) { listArray ->
             listArray.asReversed()
             rvAdapter.changeList(listArray)
+        }
+
+        binding.newNoteFab.setOnClickListener {
+            APP.navController.navigate(R.id.notesEditingFragment)
         }
     }
 
