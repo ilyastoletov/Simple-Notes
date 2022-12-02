@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.rostelekom.simplenotes.APP
 import com.rostelekom.simplenotes.R
 import com.rostelekom.simplenotes.databinding.FragmentNotesListBinding
 import com.rostelekom.simplenotes.ui.adapters.NotesAdapter
-import com.rostelekom.simplenotes.ui.models.Notes
 
 class NotesListFragment : Fragment() {
 
@@ -47,7 +46,7 @@ class NotesListFragment : Fragment() {
         }
 
         binding.newNoteFab.setOnClickListener {
-            APP.navController.navigate(R.id.notesEditingFragment)
+            findNavController().navigate(R.id.action_notesListFragment_to_notesNewFragment)
         }
     }
 

@@ -11,16 +11,24 @@
         android:label="fragment_notes_list"
         tools:layout="@layout/fragment_notes_list" >
         <action
-            android:id="@+id/action_notesListFragment_to_notesEditingFragment"
-            app:destination="@id/notesEditingFragment" />
+            android:id="@+id/action_notesListFragment_to_notesNewFragment"
+            app:destination="@id/notesNewFragment"
+            app:enterAnim="@anim/fadein"
+            app:exitAnim="@anim/fadeout"
+            app:popEnterAnim="@anim/fadein"
+            app:popExitAnim="@anim/fadeout" />
     </fragment>
     <fragment
-        android:id="@+id/notesEditingFragment"
-        android:name="com.rostelekom.simplenotes.ui.screens.notes_editing.NotesEditingFragment"
+        android:id="@+id/notesNewFragment"
+        android:name="com.rostelekom.simplenotes.ui.screens.new_note.NewNoteFragment"
         android:label="NotesEditingFragment"
-        tools:layout="@layout/fragment_notes_editing">
+        tools:layout="@layout/fragment_notes_new">
         <action
-            android:id="@+id/action_notesEditingFragment_to_notesListFragment"
-            app:destination="@id/notesListFragment" />
+            android:id="@+id/action_notesNewFragment_to_notesListFragment"
+            app:destination="@id/notesListFragment"
+            app:enterAnim="@anim/fadein"
+            app:exitAnim="@anim/fadeout"
+            app:popEnterAnim="@anim/fadein"
+            app:popExitAnim="@anim/fadeout"/>
     </fragment>
 </navigation>

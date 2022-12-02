@@ -9,18 +9,15 @@ class NoteRealisation(private val dao: NoteDao) : NoteRepository {
     override val allNotes: LiveData<List<NotesModel>>
         get() = dao.getAllNotes()
 
-    override suspend fun insertNote(model: NotesModel, onSuccess: () -> Unit) {
+    override suspend fun insertNote(model: NotesModel) {
         dao.noteInsert(model)
-        onSuccess()
     }
 
-    override suspend fun deleteNote(model: NotesModel, onSuccess: () -> Unit) {
+    override suspend fun deleteNote(model: NotesModel) {
         dao.noteDelete(model)
-        onSuccess()
     }
 
-    override suspend fun editNote(model: NotesModel, onSuccess: () -> Unit) {
+    override suspend fun editNote(model: NotesModel) {
         dao.updateNote(model)
-        onSuccess()
     }
 }

@@ -5,16 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.rostelekom.simplenotes.R
 import com.rostelekom.simplenotes.data.room.model.NotesModel
 import com.rostelekom.simplenotes.databinding.NotesItemBinding
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesHolder>() {
 
-    private var notes: List<NotesModel> = listOf(
-        NotesModel(id=0, "Любимое занятие", "Порой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знать"),
-        NotesModel(id=0, "Любимое занятие", "Порой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знатьПорой я очень люблю анально ублажать себя, и это всё что стоит знать")
-    )
+    private var notes: List<NotesModel> = listOf()
 
     class NotesHolder(itemView: View, binding: NotesItemBinding): RecyclerView.ViewHolder(itemView) {
         val title: TextView = binding.notesTitle
@@ -33,7 +29,10 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesHolder>() {
 
     override fun getItemCount(): Int = notes.size
 
-    private fun String.getFirstSymbols(count: Int): String = this.split("", limit=count).dropLast(1).joinToString("") + if (this.length > count) { "..." } else { "" }
+    private fun String.getFirstSymbols(count: Int): String =
+        this.split("", limit=count)
+            .dropLast(1)
+            .joinToString("") + if (this.length > count) { "..." } else { "" }
 
     fun changeList(newNotesList: List<NotesModel>) {
         notes = newNotesList

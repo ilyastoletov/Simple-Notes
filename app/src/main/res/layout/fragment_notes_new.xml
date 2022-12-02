@@ -4,11 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.screens.notes_editing.NotesEditingFragment">
+    tools:context=".ui.screens.new_note.NewNoteFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/notes_editing_toolbar"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/notes_apply_menu"
+        android:minHeight="56dp"
+        android:background="@color/status_bar_color"
+        app:title="Новая заметка"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="55dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,6 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Заголовок Заметки"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
                 android:cursorVisible="true"
                 android:textCursorDrawable="@drawable/cursor"
                 android:inputType="text"
@@ -37,6 +53,8 @@
                 android:id="@+id/et_note_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="7dp"
                 android:layout_marginTop="10dp"
                 android:background="@android:color/transparent"
                 android:cursorVisible="true"

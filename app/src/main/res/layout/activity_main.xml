@@ -8,6 +8,15 @@
         android:background="@color/grey_main"
         tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:background="@color/status_bar_color"
+        app:title="Заметки"
+        app:titleTextColor="@color/white"
+        app:layout_constraintBaseline_toTopOf="parent"/>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
