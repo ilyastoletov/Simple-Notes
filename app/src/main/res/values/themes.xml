@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.SImpleNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.SimpleNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/grey_main</item>
         <item name="colorPrimaryVariant">@color/status_bar_color</item>
@@ -13,6 +13,11 @@
         <item name="tooltipForegroundColor">?attr/colorPrimaryVariant</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.SplashScreen" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen_theme</item>
+        <item name="android:statusBarColor">@color/grey_main</item>
     </style>
 
 </resources>
