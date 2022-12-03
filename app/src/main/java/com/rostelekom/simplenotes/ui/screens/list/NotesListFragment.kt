@@ -46,7 +46,9 @@ class NotesListFragment : Fragment() {
         }
 
         binding.newNoteFab.setOnClickListener {
-            findNavController().navigate(R.id.action_notesListFragment_to_notesNewFragment)
+            val bundle = Bundle()
+            bundle.putBoolean("new_note", true)
+            findNavController().navigate(R.id.action_notesListFragment_to_notesNewFragment, bundle)
         }
     }
 

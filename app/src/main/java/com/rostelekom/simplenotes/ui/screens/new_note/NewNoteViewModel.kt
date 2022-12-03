@@ -14,4 +14,14 @@ class NewNoteViewModel : ViewModel() {
             REPOSITORY.insertNote(model)
         }
 
+    fun editNote(model: NotesModel) =
+        viewModelScope.launch (Dispatchers.IO) {
+            REPOSITORY.editNote(model)
+        }
+
+    fun deleteNote(model: NotesModel) =
+        viewModelScope.launch (Dispatchers.IO) {
+            REPOSITORY.deleteNote(model)
+        }
+
 }
